@@ -1,8 +1,8 @@
 package org.network;
 
-public Wifi {
+public class  Wifi {
 
-    public void wifeName(){
+    public void wifiName(){
         System.out.println("Wife name: TestSolutionRwanda");
     } 
 
@@ -20,3 +20,5 @@ public Wifi {
     }
 
 }
+
+
