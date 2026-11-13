@@ -1,146 +1,97 @@
-# Session 5 — NetworkInformation
+# NetworkInformation: A Java Lesson on Classes and Objects
 
-## 1. Translate the question into a plan
+This project is a small Java console program for practicing classes, objects, packages, and instance methods. It prints a label from each of four classes: `Wifi`, `MobileData`, `Lan`, and `Wireless`.
 
-Create four public classes, all in the **same package**, `org.network`:
+The program is an object-oriented programming exercise, not a network diagnostic tool. It does not connect to Wi-Fi, inspect a local network, use mobile data, or communicate with a modem.
 
-| Class | Required instance method | Example object-reference name |
-|---|---|---|
-| `Wifi` | `wifiName()` | `wifi` |
-| `MobileData` | `dataName()` | `mobileData` |
-| `Lan` | `lanName()` | `lan` |
-| `Wireless` | `modamName()` | `wireless` |
+**Author:** Ushindi B. Victoire - Software QA Engineer | Requirements Specialist | GitHub: [@ub-victoire](https://github.com/ub-victoire) · [@ub-victor](https://github.com/ub-victor)
 
-Inside `Wifi.main`:
+## What you will learn
 
-1. Create one object of each class, including `Wifi` itself.
-2. Call each object's required method.
+By working through the lesson, you will learn how to:
 
-**Important naming detail:** the exercise specifies `modamName()`. Keep that exact spelling for the method, even though the usual English word is “modem.” The displayed label can correctly say “Modem Name.” Similarly, preserve the class names `Wifi` and `Lan` exactly as given.
+- organize related Java classes in a package;
+- define a class and an instance method;
+- create objects with `new`;
+- store object references in local variables;
+- call an instance method with the dot operator;
+- compile several source files and run a class by its fully qualified name.
 
-We assume the methods should print fictional network names because the question specifies no input or network-discovery requirement. This program will not read your actual Wi-Fi configuration, connect to a network, or request passwords.
+## 1. Network terms used in the example
 
-### What you are practicing
+The class names refer to familiar networking terms, but each class only prints a sample name.
 
-This is a consolidation exercise: the same-package pattern from Question 04, expanded from two classes to four. It does not introduce inheritance, multithreading, or real networking APIs.
+| Term | Meaning |
+|---|---|
+| Wi-Fi | A wireless way for devices to join a local network. |
+| Mobile data | Internet or network access provided through a cellular mobile network. |
+| LAN | A local area network connecting devices in a limited area, such as a home, school, or office. |
+| Modem | A device that connects a network to an internet service, depending on the type of connection. |
 
-## 2. Create a separate sibling project
+These technologies are related, but they are not interchangeable. For example, Wi-Fi can connect a phone to a LAN, while mobile data uses a cellular network. This program does not model those connections; the terms are used to name the example classes.
 
-From your current `PhoneDetails` directory:
+## 2. Project structure
 
-```bash
-cd ..
-pwd
-mkdir -p NetworkInformation/src/org/network NetworkInformation/.vscode
-cd NetworkInformation
-code .
-```
-
-Your source structure will be:
+The Java package is `org.network`. The folder names under `src` match that package:
 
 ```text
 NetworkInformation/
-├── .gitignore
-├── README.md
-├── .vscode/
-│   └── settings.json
 └── src/
     └── org/
         └── network/
-            ├── Wifi.java
-            ├── MobileData.java
             ├── Lan.java
+            ├── MobileData.java
+            ├── Wifi.java
             └── Wireless.java
 ```
 
-All four Java files go directly inside `src/org/network/`. Do not create a separate package for each class.
+Each public class is in a file with the same name, including capitalization. For example, `public class Lan` is declared in `Lan.java`.
 
-### VS Code configuration
+## 3. Define the supporting classes
 
-Create `.vscode/settings.json`:
+Each class declares a method that prints one line. These methods are instance methods: they belong to objects created from their classes.
 
-```json
-{
-    "java.project.sourcePaths": ["src"],
-    "java.project.outputPath": "out"
-}
-```
-
-Keep using your installed JDK 25. No additional tools are needed.
-
-### Ignore generated files and backups
-
-Create `.gitignore`:
-
-```gitignore
-# Compiled Java files and build output
-*.class
-out/
-bin/
-target/
-
-# Editor backups
-*~
-*.java.save
-
-# Logs
-*.log
-```
-
-## 3. Write the supporting classes
-
-Each source file begins with the same package declaration. Each public class name must match its filename exactly, including capitalization.
-
-### MobileData.java
-
-Location: `src/org/network/MobileData.java`
-
-```java
-package org.network;
-
-public class MobileData {
-
-    public void dataName() {
-        System.out.println("Mobile Data Name: Example Mobile");
-    }
-}
-```
-
-### Lan.java
-
-Location: `src/org/network/Lan.java`
+### `Lan.java`
 
 ```java
 package org.network;
 
 public class Lan {
-
     public void lanName() {
-        System.out.println("LAN Name: Example Office LAN");
+        System.out.println("Lan name: Test Solution Lan");
     }
 }
 ```
 
-### Wireless.java
+### `MobileData.java`
 
-Location: `src/org/network/Wireless.java`
+```java
+package org.network;
+
+public class MobileData {
+    public void dataName() {
+        System.out.println("Mobile Data Name: Airtel");
+    }
+}
+```
+
+### `Wireless.java`
 
 ```java
 package org.network;
 
 public class Wireless {
-
     public void modamName() {
-        System.out.println("Modem Name: Example Modem");
+        System.out.println("Modem Name: TSR Modem");
     }
 }
 ```
 
-These classes do not need their own `main` methods.
+The method is spelled `modamName()` in this exercise. Java treats it as an identifier, so its spelling in the declaration and in every call must match exactly.
 
-## 4. Write the entry-point class
+## 4. Create objects and call their methods
 
-Create `src/org/network/Wifi.java`:
+`Wifi` contains the program's entry point, `main`, and creates one object from each class:
 
 ```java
 package org.network;
@@ -148,7 +99,7 @@ package org.network;
 public class Wifi {
 
     public void wifiName() {
-        System.out.println("Wi-Fi Name: Example Learning Network");
+        System.out.println("Wife name: TestSolutionRwanda");
     }
 
     public static void main(String[] args) {
@@ -165,250 +116,121 @@ public class Wifi {
 }
 ```
 
-There are **four explicit object creations and four instance-method calls**, all inside `Wifi.main`.
+### Read the object creation statements
 
-No imports are required between these classes because they all belong to `org.network`.
-
-We continue using `var` for clearly initialized local variables and the conventional static entry point. Both are valid on your Java 25 installation; no preview features are required.
-
-## 5. Understand the relationships
-
-### The class and the reference are different
+Consider this line:
 
 ```java
 var mobileData = new MobileData();
 ```
 
-- `MobileData` is the class name.
-- `new MobileData()` creates an object and invokes its no-argument constructor.
-- `mobileData` is the local variable holding a reference to that object.
-- The compiler infers the variable's type as `MobileData`.
+- `MobileData` is the class.
+- `new MobileData()` creates a `MobileData` object.
+- `mobileData` is a local variable that refers to that object.
+- `var` lets Java infer the variable's type from the expression on the right. Here, the inferred type is `MobileData`.
 
-The explicit-type equivalent is:
+The same declaration with an explicit type is:
 
 ```java
 MobileData mobileData = new MobileData();
 ```
 
-Use either declaration, not both in the same scope.
+Both forms create the same kind of object. This project uses `var`, which requires Java 10 or later.
 
-### An object does not acquire other classes' methods
+### Read the method calls
 
-This works:
+The dot operator calls a method on a particular object:
 
 ```java
 mobileData.dataName();
 ```
 
-This does not:
+This calls `dataName()` on the object referenced by `mobileData`. Each method belongs to its own class; for example, `dataName()` is not a method of `Wifi`.
+
+There are four object creations and four method calls in `main`. Creating an object and calling its method are separate actions: an object can be created without its method being called.
+
+### Why is `main` static?
+
+Java starts this program at:
 
 ```java
-wifi.dataName();
+public static void main(String[] args)
 ```
 
-`Wifi` does not define or inherit `dataName()`. Sharing a package allows simple-name access to classes; it does not merge their methods.
+The `main` method is `static`, so the Java runtime can call it without first creating a `Wifi` object. The `wifiName()` method is not static, so `main` creates a `Wifi` object and calls `wifiName()` on it.
 
-### Why create a Wifi object inside Wifi?
+The other classes are in the same package, so `Wifi` can refer to them by their simple class names. A shared package does not combine the classes or give one class access to another class's methods; each method is still called on an object of the class that defines it.
 
-`main` is static, while `wifiName()` is an instance method. Creating a `Wifi` object gives us an instance on which to call `wifiName()` and satisfies the requirement to create objects of **all four classes**.
+## 5. Compile and run the program
 
-Do not make every method static just to avoid object creation. The assignment is specifically practicing objects and instance methods.
+You need a JDK, version 10 or later, because the code uses local-variable type inference with `var`. Run the following commands from the project root (the directory containing `src`).
 
-### No inheritance is required
-
-There is no need for `extends`. `Wifi.main` uses the other classes by constructing their objects and invoking their methods.
-
-## 6. Compile and test the compiled output
-
-Save all files. From the `NetworkInformation` project root, run:
+First, create an output directory and compile the Java files:
 
 ```bash
-javac --release 25 -d out src/org/network/*.java
+mkdir -p out
+javac -d out src/org/network/*.java
+```
+
+Then run the class containing `main`:
+
+```bash
 java -cp out org.network.Wifi
 ```
 
-- `--release 25` explicitly sets the Java target.
-- Bash expands `*.java` into the Java files directly inside this source directory.
-- `-d out` keeps generated bytecode outside `src/`.
-- `org.network.Wifi` identifies the compiled entry-point class.
+Here is what the commands do:
 
-Expected generated files:
+- `javac` compiles the source files into Java bytecode.
+- `-d out` places the generated `.class` files in `out`, keeping them separate from the source files.
+- `-cp out` tells the Java runtime where to find the compiled classes.
+- `org.network.Wifi` is the fully qualified class name: package name plus class name.
 
-```text
-out/org/network/Wifi.class
-out/org/network/MobileData.class
-out/org/network/Lan.class
-out/org/network/Wireless.class
-```
-
-Expected console output:
+The output should be:
 
 ```text
-Wi-Fi Name: Example Learning Network
-Mobile Data Name: Example Mobile
-LAN Name: Example Office LAN
-Modem Name: Example Modem
+Wife name: TestSolutionRwanda
+Mobile Data Name: Airtel
+Lan name: Test Solution Lan
+Modem Name: TSR Modem
 ```
 
-You can compile and run as a single guarded command:
+The first line reflects the current string in `Wifi.wifiName()`: it says `Wife name`. If the intended label is `Wi-Fi name`, change that string in the `System.out.println` call in `Wifi.java`. The other values are also example text, not information read from the computer or a network.
+
+You can combine compilation and execution with `&&`:
 
 ```bash
-javac --release 25 -d out src/org/network/*.java && java -cp out org.network.Wifi
+javac -d out src/org/network/*.java && java -cp out org.network.Wifi
 ```
 
-The run step happens only if compilation succeeds.
+The runtime command runs only if compilation succeeds.
 
-### Use the class-launch form for this checkpoint
+## 6. Common errors and how to fix them
 
-In your previous project, you passed a `.java` file to `java`, selecting source-file launch mode. That is a valid alternative workflow. For this checkpoint, use the command above with **`org.network.Wifi`**, so you specifically test the compiled classes under `out/`.
-
-Your usual command also compiles these files successfully for the simple paths used here:
-
-```bash
-javac -d out $(find src -name "*.java")
-```
-
-The directory wildcard is just shorter for this one-package project. Do not run both compile commands unless you have a reason to rebuild.
-
-## 7. Add a README
-
-Create `README.md`:
-
-````markdown
-# NetworkInformation
-
-Core Java OOP — Question 05.
-
-## Objective
-
-Create Wifi, MobileData, Lan, and Wireless objects inside Wifi.main,
-then call each object's required instance method.
-
-All classes belong to org.network.
-
-## Classes and methods
-
-| Class | Method |
+| Error or symptom | What to check |
 |---|---|
-| Wifi | wifiName() |
-| MobileData | dataName() |
-| Lan | lanName() |
-| Wireless | modamName() |
+| `cannot find symbol` for a class | Check the class name, filename, `package org.network;` declaration, and whether the file was included in compilation. |
+| `cannot find symbol` for a method | Check the method spelling and capitalization in both its declaration and its call. |
+| `non-static method ... cannot be referenced from a static context` | Create an object and call the method on it, such as `wifi.wifiName()`. |
+| `Main method not found` | Run `org.network.Wifi`, not one of the supporting classes. |
+| No output for one of the classes | Check that its object was created and its method call is present in `main`. |
+| Output does not reflect a recent edit | Save the source file, compile again, and then run the compiled class. |
 
-The method name modamName() intentionally follows the assignment spelling.
+## 7. Practice
 
-## Requirements
+Try these small changes after the program runs:
 
-JDK 25. No external dependencies or build tools are required.
+1. Change one printed sample name, then compile and run again.
+2. Change `Wife name` to `Wi-Fi name` in `Wifi.java`. What changes in the output?
+3. Comment out `wireless.modamName();`, then compile and run. The object is still created, but its method no longer prints a line. Restore the call afterward.
+4. Replace `var lan = new Lan();` with `Lan lan = new Lan();`. Compile and confirm that the output is unchanged.
+5. Add a new method to a class and call it from `main`. What must you do to make sure the method is called on an object of the correct class?
 
-## Compile and run
+For each change, keep the Java class name, filename, package, and method spelling consistent.
 
-From the project root:
+## Key ideas
 
-```bash
-javac --release 25 -d out src/org/network/*.java
-java -cp out org.network.Wifi
-```
-
-## Expected output
-
-```text
-Wi-Fi Name: Example Learning Network
-Mobile Data Name: Example Mobile
-LAN Name: Example Office LAN
-Modem Name: Example Modem
-```
-
-## Concepts practiced
-
-- Multiple classes in one package
-- Object creation and references
-- Instance-method calls
-- Local-variable type inference with var
-- Multi-file compilation and class launching
-
-All network names are fictional. This program does not access real networks.
-````
-
-## 8. Review, commit, and publish
-
-First check that you are not accidentally inside another repository:
-
-```bash
-git rev-parse --show-toplevel
-```
-
-- If it reports **not a git repository**, initialize below.
-- If it prints the `NetworkInformation` directory, skip initialization.
-- If it prints a parent directory, resolve the repository layout before creating a nested repository.
-
-For a new independent repository:
-
-```bash
-git init -b main
-```
-
-Stage only the intended files:
-
-```bash
-git add src/org/network/Wifi.java src/org/network/MobileData.java src/org/network/Lan.java src/org/network/Wireless.java .vscode/settings.json .gitignore README.md
-git diff --cached --stat
-git diff --cached
-```
-
-Confirm that there are no `.class`, `~`, or `.java.save` files in the staged changes. Then commit:
-
-```bash
-git commit -m "Complete NetworkInformation OOP exercise"
-```
-
-Create an empty GitHub repository named `NetworkInformation` under your account. Do not initialize it with another README or ignore file.
-
-If you use the same account as your previous projects, and no `origin` is configured yet:
-
-```bash
-git remote add origin https://github.com/ub-victoire/NetworkInformation.git
-git push -u origin main
-git status
-```
-
-Use the actual repository URL if you choose another account or name. Inspect the hosted repository before submitting its URL.
-
-## 9. Common mistakes
-
-| Symptom | Check |
-|---|---|
-| `cannot find symbol: class MobileData` | Filename, class spelling, shared package declaration, and inclusion in compilation. |
-| `cannot find symbol: method modemName()` | The required method is spelled `modamName()` in this assignment. Declaration and call must match. |
-| `non-static method ... cannot be referenced from a static context` | Call the method on its object, such as `wifi.wifiName()`. |
-| `Main method not found` when launching a supporting class | Launch `org.network.Wifi`. |
-| Only three objects are created | Remember the `Wifi` object too. |
-| Output is outdated | Save all files, recompile, and launch the compiled class again. |
-| Generated files appear in Git | Check ignore rules and whether the files were tracked before those rules were added. |
-
-## 10. Final checklist
-
-- [ ] Separate project/repository named `NetworkInformation`.
-- [ ] Four correctly named public classes in `org.network`.
-- [ ] Required methods use their exact specified names.
-- [ ] Four objects are created inside `Wifi.main`.
-- [ ] Four methods are called through the correct object references.
-- [ ] No unnecessary imports, inheritance, or static replacements for instance methods.
-- [ ] Class-launch command prints the four expected lines.
-- [ ] README explains how to build and run.
-- [ ] Generated files and backups are not staged.
-- [ ] Intended files are pushed to the remote repository.
-
-## 11. Small experiment before submitting
-
-Temporarily comment out this call:
-
-```java
-wireless.modamName();
-```
-
-Save, recompile, and run. You should see only three output lines even though the `Wireless` object is still created. This demonstrates that **creating an object and calling its method are separate operations**.
-
-Restore the call, rebuild, and verify all four lines before committing.
-
-**Next checkpoint:** share your four source files and the output from `java -cp out org.network.Wifi`. Output checks the visible behavior; source review checks the required structure.
+- A **class** defines a type; an **object** is an instance created from that type.
+- A **reference variable** such as `mobileData` lets the program use an object.
+- An **instance method** is called on an object, as in `mobileData.dataName()`.
+- A **package** organizes related classes and corresponds to the source directory structure.
+- This lesson prints fixed example text. It does not discover or connect to real networks.
