@@ -1,5 +1,7 @@
 package org.network;
 
 public class Lan {
-    public class 
+    public  void  lanName() {
+        System.out.println("Lan name: Test Solution Lan");
+    }
 }
